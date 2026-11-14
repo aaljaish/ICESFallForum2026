@@ -7,3 +7,4 @@
 - Preserve click and keyboard navigation, and check the visible reveal states when editing interactive slides.
 
 - Commit and push each presentation update to the existing GitHub repository so the published version stays current.
+- Keep the presenter script and embedded speaker notes synchronized with slide content, numbering and click reveals when updating the presentation.

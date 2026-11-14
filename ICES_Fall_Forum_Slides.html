@@ -524,6 +524,14 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         <h2 id="disclaimer-heading">Disclaimer</h2>
         <p>This session is intended for educational and illustrative purposes. Examples use public or synthetic information. Participants are responsible for ensuring their use of the tools discussed complies with applicable organizational policies, institutional requirements, agreements, and professional obligations.</p>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>All right. Today I want to show you some of the ways I use AI in research work. We&#x27;re going to look at a few things that are easy to start using, and then work our way into more advanced features.</p>
+        <p>[Click to reveal your name and affiliation.]</p>
+        <p>I&#x27;m Ahmed Al-Jaishi. I&#x27;m an adjunct scientist at ICES and a research scientist at Western University.</p>
+        <p>[Click to reveal the disclaimer.]</p>
+        <p>The examples today use public or synthetic information. These are demonstrations, so before you use any of these tools in your own work, make sure you&#x27;re following your organization&#x27;s policies and the requirements that apply to your data.</p>
+      </aside>
     </section>
 
 
@@ -531,10 +539,32 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
       <h2 id="objectives-title">Learning objectives</h2>
       <p class="slide-intro">By the end of this session, you’ll be able to:</p>
       <ol id="workshop-objectives"></ol>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Here&#x27;s what we&#x27;re going to cover. I&#x27;ll build this up one item at a time.</p>
+        <p>[Click: Language models.]</p>
+        <p>First, what is a large language model, and how does it actually start putting an answer together?</p>
+        <p>[Click: Models, effort and usage.]</p>
+        <p>Then we&#x27;ll look at choosing a model and its thinking effort. You don&#x27;t need the most capable model for every single thing you do.</p>
+        <p>[Click: Scheduled tasks.]</p>
+        <p>We&#x27;ll look at tasks that run on a schedule, like a morning calendar check.</p>
+        <p>[Click: Plugins.]</p>
+        <p>Then plugins, which let the model work with apps you already use.</p>
+        <p>[Click: Skills.]</p>
+        <p>And skills, which save a set of instructions so you don&#x27;t have to keep typing the same long prompt.</p>
+        <p>[Click: Play datasets.]</p>
+        <p>We&#x27;ll use R to create a synthetic dataset that we can use to plan an analysis and draft code.</p>
+        <p>[Click: Plan mode and goals.]</p>
+        <p>Finally, we&#x27;ll bring those pieces together. We&#x27;ll make a detailed analysis plan, approve it, and then give the model a specific condition for when the work is complete.</p>
+      </aside>
     </section>
 
     <section class="slide section-divider" hidden aria-labelledby="divider-llm-title">
       <h2 id="divider-llm-title">Large language models</h2>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Before we get into the tools, let&#x27;s spend a minute on what a large language model is. I want us to have the same starting point, because it helps explain both what these models can do and why we still need to check their work.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="llm-title" data-topic="Language models" data-objective="Explain how a model builds a response.">
@@ -553,11 +583,26 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
         <p id="attention-caption" class="llm-attention"></p>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>A large language model learns patterns from text. When it generates an answer, it builds that answer one token at a time. A token might be a word, part of a word, or punctuation.</p>
+        <p>[Click to reveal the survey example.]</p>
+        <p>Let&#x27;s use a simple example. We give it the fact that, of ten analysts invited, eight completed the survey. Then we ask, “How many analysts completed the survey?”</p>
+        <p>The answer hasn&#x27;t started yet, but the context is already there. It has the survey fact and our question. It uses that context to predict the first token.</p>
+        <p>[Click “One token.”]</p>
+        <p>Here, that first token is “Eight.” It hasn&#x27;t had to invent a starting word out of nowhere. “How many” tells it we&#x27;re asking for a count, and the fact tells it how many people completed the survey.</p>
+        <p>[Click “One token” again.]</p>
+        <p>Now “Eight” is also part of the context. The next token is “analysts.”</p>
+        <p>[Continue clicking “One token,” pausing as the highlighted context changes.]</p>
+        <p>Then “completed,” then “the,” then “survey,” and finally the period. Each new token gets added to what the model can use for the next prediction.</p>
+        <p>The highlighting is a simplified way of showing attention: different parts of the available context help with different parts of the answer. These percentages and highlights are illustrative. We&#x27;re not looking inside a live model here.</p>
+        <p>That&#x27;s also why the information we give it matters. A response can sound fluent without being correct, so we still need to check it against the source.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="providers-title" data-reset-reveals>
       <h2 id="providers-title">The AI tools you’ll encounter</h2>
-      
+
       <table class="provider-overview">
         <thead><tr><th scope="col">Company</th><th scope="col">Models</th><th scope="col">Product you may recognize</th></tr></thead>
         <tbody>
@@ -568,14 +613,27 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </tbody>
       </table>
       <p class="source-line">Official sources · <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noopener">OpenAI</a> · <a href="https://www.anthropic.com/news/models" target="_blank" rel="noopener">Anthropic</a> · <a href="https://gemini.google/about/" target="_blank" rel="noopener">Google</a> · <a href="https://www.perplexity.ai/help-center/en/articles/10352903-what-is-pro-search" target="_blank" rel="noopener">Perplexity</a></p>
+
       <aside class="speaker-notes" hidden aria-label="Presenter script">
-        You’ve probably heard several of these names. OpenAI makes GPT models, which you can use through ChatGPT. Anthropic makes Claude, and Google makes Gemini. Perplexity offers a search-focused service that uses its own models and models from other providers.
-        In this workshop, we’re focusing on the models offered by OpenAI. The concepts we’ll cover, including choosing a model, setting its thinking effort, planning an analysis and checking the results, apply across model providers. The controls and available features vary between products.
+        <p>You&#x27;ve probably heard several of these names, and it can get a little confusing because we use the company name, the model name and the app name almost interchangeably.</p>
+        <p>[Click: OpenAI.]</p>
+        <p>OpenAI is the company. GPT is the model family, and ChatGPT is the product many of us use to interact with those models.</p>
+        <p>[Click: Anthropic.]</p>
+        <p>Anthropic makes Claude. Here, Claude is also the name you&#x27;ll recognize from the app.</p>
+        <p>[Click: Google.]</p>
+        <p>Google has Gemini.</p>
+        <p>[Click: Perplexity.]</p>
+        <p>And Perplexity is a service you may have used for searching and getting answers with sources. It uses its own models and models from other providers.</p>
+        <p>For this workshop, I&#x27;m focusing on the models offered by OpenAI. But the concepts we&#x27;re going to discuss apply across model providers. The names, buttons and available features will be different, but the questions we&#x27;re asking are similar: which model should I use, what information does it need, and how will I check the result?</p>
       </aside>
     </section>
 
     <section class="slide section-divider" hidden aria-labelledby="divider-model-title">
       <h2 id="divider-model-title">Model choice, thinking effort and usage</h2>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>All right. Let&#x27;s start with model choice. There are really two decisions here: which model you want to use, and how much thinking effort you want it to put into the task. Both affect how long the work takes and how much of your usage it consumes.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="model-title" data-reset-reveals data-topic="Models, effort and usage" data-objective="Choose a model and thinking effort that fit the task.">
@@ -609,6 +667,19 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
       </div>
       <p class="source-line" data-reveal="5">OpenAI models in ChatGPT Work / Codex · <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noopener">Model guidance</a></p>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>[Click to reveal the simulated model menu.]</p>
+        <p>When you open the model menu, you&#x27;ll see several options. You don&#x27;t have to use the same one for the whole project. I change models depending on what I&#x27;m asking it to do.</p>
+        <p>[Click: Luna.]</p>
+        <p>Luna is my choice for quick, focused changes. If the task is clear and fairly contained, I often start there. It&#x27;s fast and economical.</p>
+        <p>[Click: Sol.]</p>
+        <p>For a substantial research task, I use Sol. That might involve working through several steps, writing code and checking the output.</p>
+        <p>[Click: Astra.]</p>
+        <p>For particularly difficult scientific reasoning or a very complex task, I use Astra. That&#x27;s where I want to spend more of the available capability.</p>
+        <p>[Click: Terra and the provider note.]</p>
+        <p>Terra is another option for writing and visual work. You don&#x27;t need to memorize all these names. The point is to match the model to the work in front of you. The same approach applies if you&#x27;re using another provider.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="effort-title" data-reset-reveals>
@@ -635,6 +706,19 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
       </div>
       <p class="source-line" data-reveal="4">Ultra uses subagents for parallel work. The other settings adjust reasoning effort. <a href="https://learn.chatgpt.com/docs/models#pick-a-reasoning-effort" target="_blank" rel="noopener">Effort guidance</a></p>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>[Click to reveal the thinking-effort window.]</p>
+        <p>Once you&#x27;ve chosen a model, you can also choose its thinking effort. These are separate settings. I&#x27;m still using the same model, but I&#x27;m changing how much reasoning effort it puts into the task.</p>
+        <p>[Click: My usual Sol settings.]</p>
+        <p>With Sol, I usually use Medium or High, depending on how much planning, analysis and checking is involved.</p>
+        <p>[Click: For particularly hard tasks.]</p>
+        <p>For particularly hard tasks, I use Astra with High effort.</p>
+        <p>[Click: Time and usage note.]</p>
+        <p>Higher effort can help with a difficult task, but it can also take longer and use more of your allowance. So I wouldn&#x27;t automatically turn everything up to the maximum. I want to see whether the extra effort improves the result for the task I&#x27;m doing.</p>
+        <p>[Optional: select a different effort level in the simulated window.]</p>
+        <p>You can see how the setting changes here. The options shown are from this interface; what you have available can vary. We&#x27;ll use Astra High for planning and Sol High for implementation later in the workshop.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="website-workflow-title">
@@ -644,6 +728,17 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         <div class="choice" data-reveal="2"><h3>Refine fonts, colours and placement</h3><p>Luna · Focused changes</p></div>
         <div class="choice" data-reveal="3"><h3>Solve especially complex elements</h3><p>Astra · High</p></div>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Here&#x27;s a simple way to think about moving between models within the same project.</p>
+        <p>[Click: Build the website.]</p>
+        <p>If I&#x27;m building a website, I might use Sol with Medium or High effort to get the main structure and behaviour working.</p>
+        <p>[Click: Refine fonts, colours and placement.]</p>
+        <p>Once it&#x27;s working, I might switch to Luna for focused changes. Change this font, move this heading, adjust this colour. Those are much smaller requests.</p>
+        <p>[Click: Solve especially complex elements.]</p>
+        <p>If I get to something particularly difficult, I can bring in Astra with High effort to work through it.</p>
+        <p>So I don&#x27;t need one model to do absolutely everything. I can use a more capable model where the task calls for it, and a faster model for the smaller changes.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="usage-title">
@@ -700,11 +795,23 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
       </div>
       <p class="source-line" data-reveal="1"><a href="https://learn.chatgpt.com/docs/pricing#what-are-the-usage-limits-for-my-plan" target="_blank" rel="noopener">Usage guidance</a></p>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>The reason this matters is that different tasks don&#x27;t all consume the same amount of usage. The model, its thinking effort and the complexity of the work all contribute.</p>
+        <p>[Click to reveal the simulated usage window.]</p>
+        <p>This is an example of where you might check your remaining allowance. These numbers are just part of the demonstration. Check your own account for your limits and reset times.</p>
+        <p>[Optional: click “Manage usage.”]</p>
+        <p>If you use the most demanding settings for every small edit, you can use up allowance that you might want for a harder task later. I try to save that capacity for the work where it makes a difference.</p>
+      </aside>
     </section>
 
 
     <section class="slide section-divider" hidden aria-labelledby="divider-scheduling-intro-title">
       <h2 id="divider-scheduling-intro-title">Scheduled tasks</h2>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>The next thing I want to show you is scheduled tasks. So far, we&#x27;ve been asking the model to do something while we&#x27;re sitting in front of it. Here, we give it a task and tell it when to run.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="scheduling-intro-title">
@@ -714,6 +821,14 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         “Read today’s events in my connected Outlook calendar. Summarize my day, then list meetings in time order. Include the join link for online meetings and the location for in-person meetings. Make sure I have enough time to walk to in-person meetings from my office or the previous meeting if applicable. Flag any missing details”
       </blockquote>
       <footer class="source-line">OpenAI Docs · <a href="https://learn.chatgpt.com/docs/automations" target="_blank" rel="noopener">https://learn.chatgpt.com/docs/automations</a></footer>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Scheduled tasks are exactly what they sound like. They&#x27;re tasks that run at a time you choose. That could be once, or it could be something that repeats every weekday or every week.</p>
+        <p>[Click to reveal the calendar prompt.]</p>
+        <p>Here&#x27;s a practical example. Every morning, I want it to read my connected Outlook calendar and summarize the day. List my meetings in time order. If a meeting is online, give me the join link. If it&#x27;s in person, tell me where I need to go.</p>
+        <p>I&#x27;ve also asked it to check whether I have enough time to walk there from my office or the previous meeting. That makes the brief more useful than just copying a list of appointments.</p>
+        <p>And the last part matters: flag any missing details. If the location or join link isn&#x27;t there, I want to know that. I don&#x27;t want it filling in something that wasn&#x27;t in the calendar.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="scheduled-title" data-topic="Scheduled tasks" data-objective="Set up a weekday calendar brief.">
@@ -722,6 +837,14 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
       <blockquote data-reveal="1" style="margin:55px 0 0; padding:6px 0 6px 32px; border-left:8px solid var(--ices-gold); max-width:1300px; font-size:34px; line-height:1.45">
         “Brief me on new papers, reports, and substantive methods analysis on pragmatic trials and cluster randomized trials. Prioritize peer-reviewed papers, methods reports/guidance, major trial protocols/results, and preprints. Emphasize registry-based designs when relevant. Include the top 3 to 5 items, with why each item matters, methods takeaways, and caveats.”
       </blockquote>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Another task I use is a weekly methods scan. Instead of starting the same literature search from scratch each week, I can give it a recurring brief.</p>
+        <p>[Click to reveal the prompt.]</p>
+        <p>In this example, I&#x27;m interested in pragmatic trials and cluster randomized trials. I&#x27;ve told it which kinds of sources to prioritize, and to pay attention to registry-based designs when they&#x27;re relevant.</p>
+        <p>I&#x27;m also limiting the output to the top three to five items. I don&#x27;t want a huge list that I won&#x27;t read. For each item, I want to know why it matters, what the methods takeaway is, and what caveats I should keep in mind.</p>
+        <p>I would still open the sources and check anything I planned to use. The scheduled task helps me find and organize the material.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="calendar-title">
@@ -764,11 +887,26 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
           <div class="agenda-item"><strong>2:00 PM</strong><div>Project meeting with patient partners<span>Zoom · <samp>zoom.example/patient-partners</samp></span></div></div>
         </div>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Here&#x27;s what setting up that calendar task could look like. This is a simulated page, and the meetings are fictional.</p>
+        <p>The task runs every weekday at eight in the morning. I&#x27;ve given it a name and the instructions for what the brief should contain.</p>
+        <p>[Open “Advanced.”]</p>
+        <p>Under Advanced, I can choose whether each run goes into a new chat or an existing chat. A new chat gives me a separate thread each time. An existing chat keeps the briefs together. For me, that&#x27;s mostly a preference about how I want to organize them.</p>
+        <p>I can also choose a project. For example, I could put all these recurring tasks into one project so they&#x27;re easy to find.</p>
+        <p>Then I choose the model and reasoning effort. This example uses Luna with Max reasoning. For a well-defined task like this, I&#x27;d try that setup and check whether the briefs are doing what I need.</p>
+        <p>[Click “Save” to reveal the example brief.]</p>
+        <p>Now I can see my day at a glance: an in-person huddle, some writing time, and an online meeting with patient partners. The useful part is having the information I need in one place before the day starts.</p>
+      </aside>
     </section>
 
 
     <section class="slide section-divider" hidden aria-labelledby="divider-plugin-title">
       <h2 id="divider-plugin-title">Plugins</h2>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>All right. Next are plugins. These give ChatGPT tools for working with other apps. So instead of only working with what I type or upload, it can work with information in an account I&#x27;ve connected.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="plugin-title" data-topic="Plugins" data-objective="Give LLMs ability to interact with external tools and applications.">
@@ -813,6 +951,19 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
           </div>
         </div>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Here&#x27;s the plugin window. You can search for the apps you already use and see which connections are available in your setup.</p>
+        <p>You might want Google Drive for documents and spreadsheets, Gmail for email, Google Calendar for meetings, or GitHub for code and project issues. There are also examples here like Asana, Notion, Linear and Dropbox.</p>
+        <p>The point is that the plugin gives the model tools to interact with that service, within the access you&#x27;ve allowed. The exact things it can do depend on the plugin.</p>
+        <p>[Click Gmail.]</p>
+        <p>If I open Gmail, I get a page describing what I can use it for, along with some example requests.</p>
+        <p>[Click “Connect.”]</p>
+        <p>Then there&#x27;s a connection step where I review the access. This is just a simulation using a fictional inbox.</p>
+        <p>[Click “Connect Gmail” in the dialog.]</p>
+        <p>Once that connection is in place, I can ask a question about my email. Let&#x27;s look at an example.</p>
+        <p>[Click “Try now” to move to the inbox slide.]</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="gmail-title">
@@ -834,11 +985,24 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
           </div>
         </div>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Let&#x27;s say I&#x27;m working on Trial XYZ and I want to know which emails need a reply, and by when.</p>
+        <p>There are three fictional messages here. One asks for feedback on a recruitment flyer. One asks me to confirm a training session. And one is just a recruitment update.</p>
+        <p>My prompt is, “Check my Gmail for Trial XYZ emails. Which ones need a reply, and by when?”</p>
+        <p>[Click to reveal the summary.]</p>
+        <p>Now I have two actions: send feedback by noon Thursday, and confirm the training by Friday. The recruitment update doesn&#x27;t ask for a reply.</p>
+        <p>That&#x27;s a fairly simple example, but it&#x27;s useful. It has taken the information in those messages and organized it around the question I actually asked. At this point, it hasn&#x27;t sent a response. It&#x27;s helped me figure out what needs my attention.</p>
+      </aside>
     </section>
 
 
     <section class="slide section-divider" hidden aria-labelledby="divider-create-skill-title">
       <h2 id="divider-create-skill-title">Skills</h2>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>The next thing I want to talk about is skills. These are useful when you keep doing the same kind of task, but it doesn&#x27;t necessarily happen on a schedule. It&#x27;s a workflow you want to reuse whenever you need it.</p>
+      </aside>
     </section>
 
     <section class="slide content-slide" hidden aria-labelledby="create-skill-title" data-topic="Skills" data-objective="A reusable set of instructions that performs a specific task consistently.">
@@ -861,6 +1025,19 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
           <p id="research-empty" hidden>No matching skills</p>
         </div>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>If you find yourself typing out the same long instructions again and again, that might be a good candidate for a skill. You save those instructions once, then use them when you have a new draft, paper or dataset to work with.</p>
+        <p>Here&#x27;s a simulated skills window. Humanizer is one example, and we&#x27;ll look at that in a minute. I&#x27;ve also included two examples that could be useful for researchers and analysts.</p>
+        <p>[Click “Evidence extraction.”]</p>
+        <p>For evidence extraction, I might want the same fields from every paper: the study design, population, exposure, comparator, outcome and estimate. The skill can also tell it to include where the information came from and mark anything that wasn&#x27;t reported.</p>
+        <p>[Close the dialog. Click “Dataset quality check.”]</p>
+        <p>For a dataset quality check, I might want it to look for missing values, values outside the expected range and repeated IDs. The instructions should tell it what one row represents, because a repeated ID isn&#x27;t always an error.</p>
+        <p>[Close the dialog. Click “Skill Creator.”]</p>
+        <p>You can also create your own. Here, I&#x27;m saving some instructions for editing a project update in plain language. I can change those instructions and then create the skill.</p>
+        <p>[Click “Create skill,” show the saved instructions, then close the dialog.]</p>
+        <p>In an interface that supports slash commands, I can type a slash and select an installed skill. The idea is that I don&#x27;t have to paste the whole set of instructions every time.</p>
+      </aside>
     </section>
     <section class="slide content-slide" hidden aria-labelledby="public-skill-title" data-reset-reveals>
       <h2 id="public-skill-title">A published writing skill</h2>
@@ -877,6 +1054,17 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
         <footer><a href="https://github.com/blader/humanizer/blob/main/SKILL.md" target="_blank" rel="noopener">Open the full SKILL.md on GitHub</a></footer></div>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>You don&#x27;t always have to create a skill yourself. People publish them, and you can review one that&#x27;s already available.</p>
+        <p>Here&#x27;s the example I mentioned: Humanizer, from the GitHub account Blader.</p>
+        <p>[Click to reveal the simulated prompt.]</p>
+        <p>I can give the model the repository link and ask it to review the skill&#x27;s instructions and supporting files. In this prompt, I&#x27;m asking it to look for security, privacy and unintended behaviour risks.</p>
+        <p>[Click to reveal the installation condition.]</p>
+        <p>Then I make the installation conditional on that review, and I ask it to install the skill in this project only. If it finds a concern, I want it to explain that before proceeding. I also want a summary of what it checked and anything it&#x27;s still uncertain about. A review doesn&#x27;t guarantee that something is risk-free.</p>
+        <p>[Click “Open the full SKILL.md on GitHub.” Return to the presentation when ready.]</p>
+        <p>This link lets us look at the actual instructions. The page on the slide is a simulation; we&#x27;re not installing anything during this demonstration.</p>
+      </aside>
     </section>
     <section class="slide content-slide" hidden aria-labelledby="invoke-skill-title">
       <h2 id="invoke-skill-title">Humanizer edits a results paragraph</h2>
@@ -885,10 +1073,21 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         <article><h3>AI-sounding draft</h3><p>It is worth noting that 36 of the 50 analysts who responded indicated that the new codebook helped them locate variables more quickly. An important caveat warrants consideration — we did not measure how long the searches took.</p></article>
         <article><h3>Humanizer revision</h3><p>Of the 50 analysts who responded, 36 said the new codebook helped them find variables faster. We did not time their searches.</p></article>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Here&#x27;s a short example of what I mean by making the writing sound more natural. This is a fictional results paragraph about analysts using a new codebook.</p>
+        <p>The first version starts, “It is worth noting,” and later says, “An important caveat warrants consideration.” Those phrases add quite a lot of wording without adding much information.</p>
+        <p>The revised version says: “Of the 50 analysts who responded, 36 said the new codebook helped them find variables faster. We did not time their searches.”</p>
+        <p>That&#x27;s much closer to how I would write it. It&#x27;s shorter, easier to read, and it still includes the limitation. I would check the revision against the original before using it, especially the numbers and any scientific wording.</p>
+      </aside>
     </section>
 
 
-    <section class="slide section-divider" hidden aria-labelledby="divider-play-data"><h2 id="divider-play-data">Play datasets</h2></section>
+    <section class="slide section-divider" hidden aria-labelledby="divider-play-data"><h2 id="divider-play-data">Play datasets</h2>
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Now I want to move into an example that&#x27;s closer to analytic work. Sometimes I want to plan an analysis or start writing code before I&#x27;m working with the actual data. A synthetic, or play, dataset can help with that.</p>
+      </aside>
+    </section>
     <section class="slide content-slide" hidden aria-labelledby="mi-data-title" data-topic="Play datasets" data-objective="Generate synthetic data to plan an analysis and draft code.">
       <h2 id="mi-data-title">My prompt for a play dataset</h2>
       <div class="skill-window mi-prompt-window"><header>Codex &nbsp;›&nbsp; Synthetic MI encounters</header>
@@ -914,8 +1113,24 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
           <p>Ask me any questions before creating the dataset.</p>
         </div>
       </div>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>This is the prompt I used to ask for a synthetic dataset in R.</p>
+        <p>The example is a hospital encounter within 30 days after an index hospitalization for myocardial infarction. That encounter could be an emergency department visit or a rehospitalization. I specified a binary outcome, called Outcome, with a prevalence of 20 percent.</p>
+        <p>[Click to show the six covariates.]</p>
+        <p>Then I listed the variables I wanted: age, sex, diabetes, chronic kidney disease, hypertension and income quintile. I&#x27;ve given it the variable names and coding, along with some ranges and prevalences.</p>
+        <p>Being specific here helps. If I already know the structure I expect, I can ask it to generate something that matches that structure.</p>
+        <p>[Click to show the correlation and file instructions.]</p>
+        <p>I&#x27;ve also asked it to induce some correlation between the covariates, and between the covariates and the outcome. That gives us more to work with than completely unrelated columns.</p>
+        <p>Finally, I asked for the R code and the CSV, and told it to ask questions before creating the dataset. For example, it would need to know how many observations I want.</p>
+        <p>These are made-up records. We can use them to develop the workflow and draft code, but the results don&#x27;t tell us what happens in a real patient population.</p>
+      </aside>
     </section>
-    <section class="slide section-divider" hidden aria-labelledby="divider-plan-design"><h2 id="divider-plan-design">Plan mode</h2></section>
+    <section class="slide section-divider" hidden aria-labelledby="divider-plan-design"><h2 id="divider-plan-design">Plan mode</h2>
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Now that we have a play dataset, let&#x27;s use it to plan an analysis. This is where I want to pause before asking the model to write and run a lot of code. I want to agree on what we&#x27;re doing and what the output should contain.</p>
+      </aside>
+    </section>
     <section class="slide content-slide" hidden aria-labelledby="plan-design" data-topic="Plan mode and goals" data-objective="Create an analysis plan, then use a goal to produce and check a complete HTML report.">
       <h2 id="plan-design">Plan the analysis with Astra High</h2>
       <p class="slide-intro">Use the play data to agree on the EDA, regression and reporting choices before execution.</p>
@@ -941,6 +1156,26 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
       </div>
       <p class="source-line"><a href="https://learn.chatgpt.com/docs/developer-commands#switch-to-plan-mode-with-plan" target="_blank" rel="noopener">OpenAI Docs · Plan mode</a></p>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>For this part, I&#x27;m using Astra with High effort. I want it to work through the analysis plan before we move into implementation.</p>
+        <p>The question is how the six covariates relate to the odds of a hospital encounter within 30 days.</p>
+        <p>Notice the prompt says that the included CSV is synthetic. And the sentence underlined in yellow is important: the plan and resulting R code should be reusable for another dataset with a similar structure and variables. I don&#x27;t want it building code around the particular values or results in this example file.</p>
+        <p>I&#x27;m asking it to specify the tables, plots, assumption checks and interpretation, with everything going into one HTML report.</p>
+        <p>[Click “Draft analysis plan.”]</p>
+        <p>The first step is to validate the input. Does the file have the expected variables and coding? What is missing? How many encounters are there?</p>
+        <p>[Click: Descriptive summaries.]</p>
+        <p>Then we explore the data, including summaries by outcome and plots of the distributions and relationships.</p>
+        <p>[Click: Regression.]</p>
+        <p>Next, fit the regression and report the adjusted odds ratios with their uncertainty.</p>
+        <p>[Click: Checks.]</p>
+        <p>Then check whether there are problems with the fit or the data that affect how we should interpret it.</p>
+        <p>[Click: Interpretation and report.]</p>
+        <p>And finally, put the interpretation and reproducible analysis into the report.</p>
+        <p>[Optional: open “Read detailed plan,” then close it.]</p>
+        <p>I would review this plan and ask for changes before approving it. The model can help develop the plan, but I still need to decide whether it answers the research question.</p>
+        <p>[Click “Approve plan and switch to Sol.”]</p>
+      </aside>
     </section>
     <section class="slide content-slide" hidden aria-labelledby="plan-execute">
       <h2 id="plan-execute">Give Sol an approved analysis plan</h2>
@@ -965,8 +1200,30 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
       </div>
       <p class="source-line"><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html" target="_blank" rel="noopener">R documentation · Generalized linear models</a></p>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Now we&#x27;ve switched to Sol with High effort. Astra helped us work through the plan. Sol is going to use those agreed decisions to write and run the analysis.</p>
+        <p>The model specification is shown here. We&#x27;re including all six covariates, expressing age per ten years, and treating income quintile as categorical, with quintile one as the reference.</p>
+        <p>The instruction is to follow the approved plan and assemble the report. The code still needs to check the dataset it receives and calculate the results from that file.</p>
+        <p>[Click “Review deliverables.”]</p>
+        <p>First, we need the input validation and a clear outcome definition.</p>
+        <p>[Click: EDA.]</p>
+        <p>Then the descriptive tables and exploratory plots.</p>
+        <p>[Click: Estimates.]</p>
+        <p>The adjusted odds ratios and a forest plot.</p>
+        <p>[Click: Diagnostics.]</p>
+        <p>The diagnostics and sensitivity checks specified in the plan.</p>
+        <p>[Click: Interpretation and code.]</p>
+        <p>And the interpretation, analysis code and session information.</p>
+        <p>Now we&#x27;ve got a concrete list of what needs to be in the report. That gives us a useful stopping condition for the next feature.</p>
+        <p>[Click “Set a completion goal.”]</p>
+      </aside>
     </section>
-    <section class="slide section-divider" hidden aria-labelledby="divider-goal-types-title"><h2 id="divider-goal-types-title">Goals with /goal</h2></section>
+    <section class="slide section-divider" hidden aria-labelledby="divider-goal-types-title"><h2 id="divider-goal-types-title">Goals with /goal</h2>
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>All right. The next thing I want to show you is /goal. This is for work where you want the agent to keep going toward a defined outcome. And because we&#x27;ve already approved a plan, we have a clear way to say what finished should look like.</p>
+      </aside>
+    </section>
     <section class="slide content-slide" hidden aria-labelledby="goal-types-title">
       <h2 id="goal-types-title">Stop when the report is complete</h2>
       <p class="slide-intro">Turn the approved plan into a measurable stopping condition.</p>
@@ -984,6 +1241,16 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
       </div>
       <p class="source-line"><a href="https://learn.chatgpt.com/docs/long-running-work" target="_blank" rel="noopener">OpenAI Docs · Long-running work</a></p>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>A goal needs a stopping condition. You could give the model something subjective, like “keep improving this until you think it&#x27;s ready.” But for this example, we can be much more specific.</p>
+        <p>The goal is to execute the approved EDA and logistic regression plan and create the HTML report. It should contain every planned item, and the model should open it and check the tables, plots and interpretation before marking the task complete.</p>
+        <p>So just creating a file with the right name isn&#x27;t enough. We want evidence that the contents match the plan.</p>
+        <p>I&#x27;ve also included a time limit. If three hours pass first, report the progress and list anything unfinished. That&#x27;s a limit on the request, rather than permission to drop the unfinished items and call the analysis complete.</p>
+        <p>[Optional: open “Review the detailed plan,” then close it.]</p>
+        <p>The plan tells it what to do. The goal tells it what outcome to work toward and when to stop. I would still review the report myself before relying on it.</p>
+        <p>[Click “Try this goal.”]</p>
+      </aside>
     </section>
     <section class="slide content-slide" hidden aria-labelledby="goal-demo-title">
       <h2 id="goal-demo-title">The goal produces a reviewable report</h2>
@@ -1011,6 +1278,25 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         </div>
       </div>
       <p class="source-line"><a href="https://learn.chatgpt.com/docs/long-running-work" target="_blank" rel="noopener">OpenAI Docs · Long-running work</a></p>
+
+      <aside class="speaker-notes" hidden aria-label="Presenter script">
+        <p>Here&#x27;s the simulated workflow using Sol High.</p>
+        <p>[Click the /goal shortcut, or type /goal in the message field.]</p>
+        <p>That brings up the goal prompt. It includes the report we want, the checks it needs to complete and the time limit.</p>
+        <p>[Click “Start simulated goal.”]</p>
+        <p>Now it&#x27;s working through the approved plan. In this demonstration, each click shows another deliverable being checked. We&#x27;re not running an analysis in the slide itself.</p>
+        <p>[Click “Check the next deliverable.”]</p>
+        <p>First, validate the input data.</p>
+        <p>[Click again.]</p>
+        <p>Then explore the distributions and relationships.</p>
+        <p>[Click again.]</p>
+        <p>Fit the logistic regression.</p>
+        <p>[Click again.]</p>
+        <p>Complete the model checks and sensitivity analyses.</p>
+        <p>[Click again to show the completed report state.]</p>
+        <p>And finally, render the HTML and open it to check the output. The example here has 1,000 synthetic records and 200 encounters. The report brings together the tables, plots, estimates, diagnostics and interpretation.</p>
+        <p>That&#x27;s the workflow I wanted to show you: use play data to get started, use a capable model to help develop the plan, and then give the implementing model a clear set of deliverables and a stopping condition. What I get at the end is something I can open, inspect and review.</p>
+      </aside>
     </section>
 
   </div>
