@@ -8,7 +8,6 @@ The presentation is self-contained. You can also download `ICES_Fall_Forum_Slide
 
 ## Workshop materials
 
-- [R workshop notebook](ICES_Fall_Forum_R_Workshop.ipynb)
 - [Synthetic MI encounter dataset and R scripts](Synthetic%20MI%20Encounters/)
 - [Example HTML analysis report](https://aaljaish.github.io/ICESFallForum2026/Synthetic%20MI%20Encounters/mi_analysis_report.html)
 
