@@ -578,7 +578,7 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         <div class="llm-grid">
           <div><h3>Possible next tokens</h3><p class="llm-sub" id="token-caption"></p><div id="token-candidates"></div></div>
           <div><h3>Answer so far</h3><p class="llm-sentence" id="llm-sentence" aria-live="polite"></p>
-            <div class="llm-controls"><button id="llm-play" class="skill-action">Play prediction</button><button id="llm-step" class="goal-launch">One token</button></div>
+            <div class="llm-controls"><button id="llm-play" class="skill-action">Play prediction</button><button id="llm-step" class="goal-launch">One token</button><button id="llm-reset" class="goal-launch">Reset</button></div>
           </div>
         </div>
         <p id="attention-caption" class="llm-attention"></p>
@@ -596,6 +596,7 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         <p>[Continue clicking “One token,” pausing as the highlighted context changes.]</p>
         <p>Then “completed,” then “the,” then “survey,” and finally the period. Each new token gets added to what the model can use for the next prediction.</p>
         <p>The highlighting is a simplified way of showing attention: different parts of the available context help with different parts of the answer. These percentages and highlights are illustrative. We&#x27;re not looking inside a live model here.</p>
+        <p>[Use “Reset” at any point to clear the answer and return to the first prediction.]</p>
         <p>That&#x27;s also why the information we give it matters. A response can sound fluent without being correct, so we still need to check it against the source.</p>
       </aside>
     </section>
@@ -1851,6 +1852,11 @@ function advancePrediction() {
   renderPrediction();
 }
 nextToken.onclick = () => { stopPrediction(); advancePrediction(); };
+document.getElementById('llm-reset').onclick = () => {
+  tokenIndex = 0;
+  stopPrediction();
+  renderPrediction();
+};
 playPrediction.onclick = () => {
   if (tokenTimer !== null) { stopPrediction(); return; }
   if (tokenIndex === tokenTurns.length) tokenIndex = 0;
