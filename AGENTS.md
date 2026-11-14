@@ -5,3 +5,5 @@
 - Use the presenter's original prompt wording when supplied. Stage long prompts in meaningful parts while retaining the full text.
 - Use section divider slides when introducing a new topic.
 - Preserve click and keyboard navigation, and check the visible reveal states when editing interactive slides.
+
+- Commit and push each presentation update to the existing GitHub repository so the published version stays current.
