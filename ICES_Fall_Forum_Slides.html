@@ -592,7 +592,7 @@ button.schedule-tile:hover, .schedule-list button:hover { background: #f2f6fa; }
         <p>[Click “One token.”]</p>
         <p>Here, that first token is “Eight.” It hasn&#x27;t had to invent a starting word out of nowhere. “How many” tells it we&#x27;re asking for a count, and the fact tells it how many people completed the survey.</p>
         <p>[Click “One token” again.]</p>
-        <p>Now “Eight” is also part of the context. The next token is “analysts.”</p>
+        <p>Now “Eight” is also part of the context. It could be followed by “analysts,” “participants” or “individuals.” In this example, “analysts” has the highest illustrative probability, so that is the token we select.</p>
         <p>[Continue clicking “One token,” pausing as the highlighted context changes.]</p>
         <p>Then “completed,” then “the,” then “survey,” and finally the period. Each new token gets added to what the model can use for the next prediction.</p>
         <p>The highlighting is a simplified way of showing attention: different parts of the available context help with different parts of the answer. These percentages and highlights are illustrative. We&#x27;re not looking inside a live model here.</p>
@@ -1781,12 +1781,12 @@ document.getElementById('replay-analysis').onclick = () => {
 
 
 const tokenTurns = [
-  { token:'Eight', choices:[['Eight',64],['Of',21],['Other',15]], cues:['ask','count'], recent:0, note:'The answer starts empty. “How many” asks for a count, and “eight” is the number who completed the survey.' },
-  { token:' analysts', choices:[['analysts',67],['of',19],['Other',14]], cues:['people'], recent:1, note:'“Eight” is now in the context. The question identifies who is being counted.' },
-  { token:' completed', choices:[['completed',74],['did',15],['Other',11]], cues:['action'], recent:2, note:'The answer now has a subject, “Eight analysts.” The survey fact supplies the action.' },
-  { token:' the', choices:[['the',81],['it',12],['Other',7]], cues:['object'], recent:1, note:'After “completed,” the phrase “the survey” in the prompt supports “the” as the next token.' },
-  { token:' survey', choices:[['survey',87],['questionnaire',8],['Other',5]], cues:['object'], recent:2, note:'With “completed the” in the answer, “survey” fits both the wording and the fact.' },
-  { token:'.', choices:[['.',78],['out',15],['Other',7]], cues:[], recent:3, note:'“Eight analysts completed the survey” is a complete statement. A period is a likely next token.' }
+  { token:'Eight', choices:[['Eight',64],['8',21],['There',15]], cues:['ask','count'], recent:0, note:'The answer starts empty. “How many” asks for a count, and “eight” is the number who completed the survey.' },
+  { token:' analysts', choices:[['analysts',67],['participants',19],['individuals',14]], cues:['people'], recent:1, note:'“Eight” is now in the context. The question identifies who is being counted.' },
+  { token:' completed', choices:[['completed',74],['finished',15],['answered',11]], cues:['action'], recent:2, note:'The answer now has a subject, “Eight analysts.” The survey fact supplies the action.' },
+  { token:' the', choices:[['the',81],['this',12],['that',7]], cues:['object'], recent:1, note:'After “completed,” the phrase “the survey” in the prompt supports “the” as the next token.' },
+  { token:' survey', choices:[['survey',87],['questionnaire',8],['form',5]], cues:['object'], recent:2, note:'With “completed the” in the answer, “survey” fits both the wording and the fact.' },
+  { token:'.', choices:[['.',78],['out',15],['and',7]], cues:[], recent:3, note:'“Eight analysts completed the survey” is a complete statement. A period is a likely next token.' }
 ];
 const tokenSentence = document.getElementById('llm-sentence');
 const candidates = document.getElementById('token-candidates');
@@ -1804,7 +1804,7 @@ function renderPrediction() {
   const done = tokenIndex === tokenTurns.length;
   const turn = tokenTurns[Math.min(tokenIndex, tokenTurns.length - 1)];
   candidates.replaceChildren();
-  document.getElementById('token-caption').textContent = done ? 'Final punctuation prediction' : 'Prediction ' + (tokenIndex + 1) + ' of ' + tokenTurns.length;
+  document.getElementById('token-caption').textContent = done ? 'Illustrative · final punctuation prediction' : 'Illustrative · prediction ' + (tokenIndex + 1) + ' of ' + tokenTurns.length;
   llmSection.querySelectorAll('[data-cue]').forEach(mark => {
     mark.classList.toggle('lit', !done && turn.cues.includes(mark.dataset.cue));
   });
