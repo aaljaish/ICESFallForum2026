@@ -180,7 +180,7 @@ If you use the most demanding settings for every small edit, you can use up allo
 
 ## Slide 11 — Scheduled tasks
 
-The next thing I want to show you is scheduled tasks. So far, we've been asking the model to do something while we're sitting in front of it. Here, we give it a task and tell it when to run.
+The next thing I want to show you is scheduled tasks.
 
 ## Slide 12 — What is task scheduling?
 
