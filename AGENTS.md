@@ -8,4 +8,4 @@
 
 - Commit and push each presentation update to the existing GitHub repository so the published version stays current.
 - Keep the presenter script and embedded speaker notes synchronized with slide content, numbering and click reveals when updating the presentation.
-- Keep the HTML presenter script at one page per presentation slide, with the full script and highlighted presentation click/demo cues available immediately. Use a readable tablet layout with scrolling for long scripts, large Previous/Next tap targets, a slide picker and text-size controls. Update it when the script changes.
+- Keep the HTML presenter script at one page per presentation slide, with the full script and compact, plain-text presentation click/demo cues available immediately. Use a readable tablet layout with scrolling for long scripts, large Previous/Next tap targets, a slide picker and text-size controls. Update it when the script changes.
