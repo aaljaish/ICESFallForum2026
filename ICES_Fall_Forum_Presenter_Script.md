@@ -125,7 +125,7 @@ For a substantial research task, I use Sol. That might involve working through s
 
 [Click: Astra.]
 
-For particularly difficult scientific reasoning or a very complex task, I use Astra. That's where I want to spend more of the available capability.
+For particularly difficult scientific reasoning or a very complex task, I use Astra.
 
 [Click: Terra and the provider note.]
 
