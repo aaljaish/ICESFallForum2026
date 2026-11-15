@@ -8,3 +8,4 @@
 
 - Commit and push each presentation update to the existing GitHub repository so the published version stays current.
 - Keep the presenter script and embedded speaker notes synchronized with slide content, numbering and click reveals when updating the presentation.
+- Keep the HTML presenter script at one page per presentation slide, with all spoken text visible immediately and keyboard navigation between pages. Update it when the script changes.

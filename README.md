@@ -8,7 +8,7 @@ The presentation is self-contained. You can also download `ICES_Fall_Forum_Slide
 
 ## Workshop materials
 
-- [Presenter script for all 29 slides](ICES_Fall_Forum_Presenter_Script.md)
+- [Presenter script slides](https://aaljaish.github.io/ICESFallForum2026/ICES_Fall_Forum_Presenter_Script.html) · [Markdown script](ICES_Fall_Forum_Presenter_Script.md)
 - [Synthetic MI encounter dataset and R scripts](Synthetic%20MI%20Encounters/)
 - [Example HTML analysis report](https://aaljaish.github.io/ICESFallForum2026/Synthetic%20MI%20Encounters/mi_analysis_report.html)
 
