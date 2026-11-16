@@ -472,8 +472,6 @@ That's the workflow I wanted to show you: use play data to get started, use a ca
 
 Thank you, everyone. I hope this gave you a few things you can try in your own research work. You can scan the QR code or use the address below it to access the presentation. And if you'd like to get in touch, my email is aaljaish@uwo.ca.
 
-[Click to reveal the closing joke.]
-
 And I’ll leave you with this: AI promised to make my life easier, and now I spend 45 minutes crafting the perfect prompt to avoid a task that would’ve taken me 10.
 
 I'm happy to take questions.
