@@ -467,3 +467,7 @@ Complete the model checks and sensitivity analyses.
 And finally, render the HTML and open it to check the output. The example here has 1,000 synthetic records and 200 encounters. The report brings together the tables, plots, estimates, diagnostics and interpretation.
 
 That's the workflow I wanted to show you: use play data to get started, use a capable model to help develop the plan, and then give the implementing model a clear set of deliverables and a stopping condition. What I get at the end is something I can open, inspect and review.
+
+## Slide 30 — Thank you
+
+Thank you, everyone. I hope this gave you a few things you can try in your own research work. You can scan the QR code or use the address below it to access the presentation. And if you'd like to get in touch, my email is aaljaish@uwo.ca. I'm happy to take questions.
